@@ -3,9 +3,7 @@ version: '3'
 services:
 
   server:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     image: ${DOCKER_REGISTRY}/example_server
     labels:
       - "discovery.service.name=example.com"
