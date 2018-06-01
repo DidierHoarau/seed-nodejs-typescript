@@ -15,10 +15,10 @@ services:
       - ./start-cmd-dev.sh:/start-cmd.sh
     hostname: ansible
     networks:
-      automation-network:
+      webproxy-network:
         aliases:
           - ansible
 
 networks:
-  automation-network:
+  webproxy-network:
     external: true

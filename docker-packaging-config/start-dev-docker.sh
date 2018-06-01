@@ -11,4 +11,4 @@ npm run packaging:service-deploy dev
 sleep 10
 
 CONTAINER=$(docker ps | grep example_server | head -n1 | cut -d" " -f1)
-docker exec -ti ${CONTAINER} bash -c "cd /opt/app-api && npm run --silent dev"
+docker exec -ti ${CONTAINER} bash -c "cd /opt/app && npm run --silent dev"

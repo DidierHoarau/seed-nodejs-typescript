@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /opt/app-api
-node dist-api/app.js
+cd /opt/app
+node dist/app.js
