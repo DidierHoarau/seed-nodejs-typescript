@@ -1,9 +1,10 @@
-version: '3'
+version: "3"
 
 services:
-
   server:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
     image: ${DOCKER_REGISTRY}/example_server
     ports:
       - 3000
@@ -12,7 +13,6 @@ services:
       - ../tsconfig.json:/opt/app/tsconfig.json
       - ../package.json:/opt/app/package.json
       - ../package-lock.json:/opt/app/package-lock.json
-      - ./start-cmd-dev.sh:/start-cmd.sh
     hostname: ansible
     networks:
       webproxy-network:

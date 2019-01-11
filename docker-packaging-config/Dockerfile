@@ -1,9 +1,23 @@
-FROM node:alpine
+# Builder
+FROM node:10-alpine as builder
+
+RUN apk add --no-cache bash git python perl alpine-sdk
 
 COPY files /opt/app
-COPY start-cmd.sh /start-cmd.sh
+COPY build.sh /opt/app/build.sh
 
-RUN apk --update add bash && \
-    chmod +x /*.sh
+WORKDIR /opt/app
 
-CMD ["/start-cmd.sh"]
+RUN chmod +x ./build.sh && \
+    ./build.sh
+
+
+# Running
+FROM node:alpine
+
+COPY --from=builder /opt/app/dist /opt/app/dist
+COPY --from=builder /opt/app/node_modules /opt/app/node_modules
+
+WORKDIR /opt/app
+
+CMD ["node", "dist/app.js"]

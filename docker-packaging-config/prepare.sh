@@ -2,11 +2,11 @@
 
 set -e
 
-npm install
+if [ "$npm_package_name" == "" ]; then
+  echo "Error: Script should be called with npm run packaging:init"
+  exit 1
+fi
 
-npm run lint
+cp -R src ${PACKAGING_FILES}
 
-npm run build
-
-cp -R $PROJECT_DIR/node_modules $PACKAGING_FILES/
-cp -R $PROJECT_DIR/dist $PACKAGING_FILES/
+find . -maxdepth 1 -type f -exec cp {} ${PACKAGING_FILES} \;

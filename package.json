@@ -4,7 +4,6 @@
   "author": "",
   "license": "UNLICENSED",
   "scripts": {
-    "packaging:init": "chmod +x docker-packaging-config/*.sh && docker-packaging-config/init.sh",
     "//": "-------------------------------------------------------------------",
     "packaging:prepare": "docker-packaging/prepare.sh",
     "packaging:image-build": "docker-packaging/image-build.sh",
