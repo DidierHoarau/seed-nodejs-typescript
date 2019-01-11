@@ -17,8 +17,7 @@
     "lint": "tslint --project tsconfig.json ./src/**/*.ts || exit 1",
     "test:unit": "npm run lint && NODE_ENV=dev jest --watch --coverage",
     "////": "-----------------------------------------------------------------",
-    "dev":
-      "npm run build && NODE_ENV=dev concurrently --kill-others \"tsc -w\" \"nodemon dist/app.js\"",
+    "dev": "npm run build && NODE_ENV=dev concurrently --kill-others \"tsc -w\" \"nodemon dist/app.js\"",
     "dev:docker": "docker-packaging-config/start-dev-docker.sh || true",
     "dev:test": "NODE_ENV=dev jest --watch --coverage"
   },
@@ -53,12 +52,18 @@
     "typescript": "^2.8.3"
   },
   "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": "src/.*.spec.ts",
-    "collectCoverageFrom": ["src/**/*.{ts}"],
+    "collectCoverageFrom": [
+      "src/**/*.{ts}"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 80,
